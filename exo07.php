@@ -77,3 +77,9 @@ echo "Jeux Pixel Bay<br>";
 foreach ($collection as $jeu) {
     afficherJeu($jeu);
 }
+
+$meilleur = trouverMeilleurJeu($collection);
+echo " Meilleur jeu <br>";
+echo $meilleur['titre'] . " avec une moyenne de " . calculerMoyenneScores($meilleur)
+
+?>
