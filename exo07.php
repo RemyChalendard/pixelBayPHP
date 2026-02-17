@@ -7,6 +7,7 @@ $collection = [
         "stock" => 40,
         "scores" => [85, 89, 88, 92, 89]
     ],
+    
 
     // Ajoutez au moins 3 autres jeux
 
