@@ -22,6 +22,7 @@ $totalTTC = calculerTTC($totalHT, $tva);
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
