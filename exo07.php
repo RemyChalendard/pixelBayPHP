@@ -37,34 +37,43 @@ $collection = [
     ],
 ];
 
-function moyenneScores($jeu) {
-    if ($jeu['scores']) {
-    }
-    return array_sum($jeu['scores']) / count($jeu['scores']);
-}
 
 function afficherJeu($jeu)
 {
-    echo "<br>Titre : " . $jeu['titre'] . "<br>";
-    echo "Prix : " . $jeu['prix'] . "<br>";
+    echo "Titre : " . $jeu['titre'] . "<br>";
+    echo "Prix : " . $jeu['prix'] . " €<br>";
     echo "Genre : " . $jeu['genre'] . "<br>";
     echo "Stock : " . $jeu['stock'] . "<br>";
-    echo "Score moyen : " . (moyenneScores($jeu)) . "<br>";
+    echo "Scores : " . implode(', ', $jeu['scores']) . "<br>";
+    echo "Moyenne : " . calculerMoyenneScores($jeu) . "/100<br><br>";
+}
+
+function calculerMoyenneScores($jeu)
+{
+    $somme = 0;
+    foreach ($jeu['scores'] as $score) {
+        $somme += $score;
+    }
+    return round($somme / count($jeu['scores']));
+}
+
+function trouverMeilleurJeu($collection)
+{
+    $meilleurJeu = $collection[0];
+    $meilleureMoyenne = calculerMoyenneScores($collection[0]);
+
+    foreach ($collection as $jeu) {
+        $moyenne = calculerMoyenneScores($jeu);
+        if ($moyenne > $meilleureMoyenne) {
+            $meilleureMoyenne = $moyenne;
+            $meilleurJeu = $jeu;
+        }
+    }
+
+    return $meilleurJeu;
 }
 
 echo "Jeux Pixel Bay<br>";
 foreach ($collection as $jeu) {
     afficherJeu($jeu);
 }
-
-
-
-/*
-function trouverMeilleurJeu($collection) {
-foreach ($collection['moyenneScores'] as $moyenneScore){
-    $moyenneScore > 
-
-}
-}
-
-*/
