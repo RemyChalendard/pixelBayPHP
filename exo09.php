@@ -11,35 +11,51 @@ $catalogue = [
 $resultat = [];
 $recherche = "";
 
-// Votre code de recherche ici
+// Recherche
 if (isset($_GET['q']) && !empty($_GET['q'])) {
     $recherche = trim($_GET['q']);
 
     foreach ($catalogue as $jeu) {
-        $titre = $jeu['titre']; 
+        $titre = $jeu['titre'];
         if (str_contains(strtolower($titre), strtolower($recherche))) {
             $resultat[] = $jeu;
         }
     }
 }
-
-
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <title>Recherche - PixelBay</title>
 </head>
+
 <body>
     <h1>Recherche PixelBay</h1>
+
     <form action="" method="GET">
         <input type="text" name="q" placeholder="Rechercher un jeu..."
-               value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
+            value="<?= htmlspecialchars($_GET['q'] ?? '') ?>">
         <button type="submit">Rechercher</button>
     </form>
 
-    <!-- Affichez les résultats ici -->
+    <?php if (!empty($recherche)) : ?>
+        <h2>Résultats pour "<?= htmlspecialchars($recherche); ?>"</h2>
+
+    <?php if (count($resultats) > 0) : ?>
+            <?php foreach ($resultats as $jeu): ?>
+                <li>
+                    <strong><?= htmlspecialchars($jeu['titre']) ?></strong>
+                    - <?= $jeu['prix'] ?> €
+                    (<?= htmlspecialchars($jeu['genre']) ?>)
+                </li>
+            <?php endforeach; ?>
+            <p><?= count($resultats) ?> résultat(s) trouvé(s).</p>
+            <?php else: ?>
+                <p>Aucun jeu trouvé pour "<?= htmlspecialchars($recherche) ?>".</p>
+            <?php endif; ?>
+            <?php endif; ?>
 </body>
 </html>
