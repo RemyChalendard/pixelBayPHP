@@ -27,9 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     var_dump($prenom);
     var_dump($email);
     var_dump($sujet);
+    var_dump($message);
 }
-
-
 
 ?>
 
@@ -84,7 +83,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="email" id="email" name="email" value="" required> <br><br>
 
         <label for="sujet">Sujet :</label>
-        <input type="" id = "" name="sujet" value="" required><br><br>
         <select name="sujet" id="sujet">
           <option value="">--Please choose an option--</option>
   <option value="Question">Question</option>
