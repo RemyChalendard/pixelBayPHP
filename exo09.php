@@ -8,7 +8,7 @@ $catalogue = [
     ["titre" => "Racing Thunder", "prix" => 34.99, "genre" => "Course"]
 ];
 
-$resultat = [];
+$resultats = [];
 $recherche = "";
 
 // Recherche
@@ -18,7 +18,7 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
     foreach ($catalogue as $jeu) {
         $titre = $jeu['titre'];
         if (str_contains(strtolower($titre), strtolower($recherche))) {
-            $resultat[] = $jeu;
+            $resultats[] = $jeu;
         }
     }
 }
@@ -44,7 +44,7 @@ if (isset($_GET['q']) && !empty($_GET['q'])) {
     <?php if (!empty($recherche)) : ?>
         <h2>Résultats pour "<?= htmlspecialchars($recherche); ?>"</h2>
 
-    <?php if (count($resultats) > 0) : ?>
+    <?php if (!empty($resultats)) : ?>
             <?php foreach ($resultats as $jeu): ?>
                 <li>
                     <strong><?= htmlspecialchars($jeu['titre']) ?></strong>
