@@ -9,6 +9,10 @@ $sujets = ["Question", "Réclamation", "Partenariat", "Autre"];
 $message = '';
 
 // Votre logique de traitement ici
+// var_dump($_SERVER);
+// var_dump($_SERVER['REQUEST_METHOD']); 
+// echo "<br>";
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nom = trim($_POST['nom'] ?? '');
@@ -84,14 +88,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <label for="sujet">Sujet :</label>
         <select name="sujet" id="sujet">
-          <option value="">--Please choose an option--</option>
-  <option value="Question">Question</option>
-  <option value="Reclamation">Réclamation</option>
-  <option value="Partenariat">Partenariat</option>
-  <option value="Autre">Autre</option>
-            <?php foreach ($sujets as $sujet): ?>
+
+          <?php foreach ($sujets as $sujet): ?>
+            <option value="">--Please choose an option--</option>
+            <option value="Question">Question</option>
+            <option value="Reclamation">Réclamation</option>
+            <option value="Partenariat">Partenariat</option>
+            <option value="Autre">Autre</option>
+
             <?php endforeach ?>
-        </select> 
+        </select>
 
         <label for="message">Message :</label>
         <textarea id="message" name="message" minlength="10" required></textarea> <br><br>
