@@ -77,16 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     }
 
-   .succes {
-     color : green;
-
-    }
-
-   .error {
-
-    color:red;
-   
-    }
 
 
 </style>
