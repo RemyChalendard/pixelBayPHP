@@ -34,6 +34,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     var_dump($message);
 }
 
+
+    // Affichez les erreurs ou le message de succès 
+
+  if (empty($nom) || strlen($nom) < 2 || strlen($nom) > 50) {
+        $erreurs[] = "Le nom doit contenir entre 2 et 50 caracteres.";
+    }
+
+    if (empty($sujet)) {
+        $erreurs[] = "Veuillez selectionner un sujet.";
+    }
+
+    if (empty($message) || strlen($message) < 10) {
+        $erreurs[] = "Le message doit contenir au moins 10 caracteres.";
+    }
+
+    if (empty($erreurs)) {
+        $succes = true;
+    }
+
 ?>
 
 <style>
@@ -89,14 +108,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="sujet">Sujet :</label>
         <select name="sujet" id="sujet">
 
-        <!-- Il faut du php dans la boucle -->
-            <?php foreach ($sujets as $sujet): ?>
+            <!-- Il faut du php dans la boucle -->
             <option value="">--Please choose an option--</option>
-            <option value="Question">Question</option>
-            <option value="Reclamation">Réclamation</option>
-            <option value="Partenariat">Partenariat</option>
-            <option value="Autre">Autre</option>
+            <?php foreach ($sujets as $sujet): ?>
+                <option value="<?= htmlspecialchars($sujet) ?>"><?= htmlspecialchars($sujet) ?></option>
             <?php endforeach ?>
+        </select>
         </select>
 
         <label for="message">Message :</label>
@@ -105,14 +122,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit">Envoyer</button>
     </form>
 
-    <!-- Affichez les erreurs ou le message de succès -->
-    <!-- Votre formulaire ici -->
-
-    <!--
-    Todo : recuperer les valeurs de $post
 
 
--->
+
+
+
 </body>
 
 </html>
