@@ -79,6 +79,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         padding: 8px;
 
     }
+
+   .succes {
+     color : green;
+
+    }
+
+   .error {
+
+    color:red;
+   
+    }
+
+
 </style>
 
 
