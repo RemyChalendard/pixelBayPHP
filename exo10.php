@@ -9,9 +9,6 @@ $sujets = ["Question", "Réclamation", "Partenariat", "Autre"];
 $message = '';
 
 // Votre logique de traitement ici
-// var_dump($_SERVER);
-// var_dump($_SERVER['REQUEST_METHOD']); 
-// echo "<br>";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -134,11 +131,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <button type="submit">Envoyer</button>
     </form>
-
-
-
-
-
 
 </body>
 
