@@ -89,14 +89,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="sujet">Sujet :</label>
         <select name="sujet" id="sujet">
 
-        <!-- Il faut du php dans la boucle -->
-            <?php foreach ($sujets as $sujet): ?>
-            <option value="">--Please choose an option--</option>
-            <option value="Question">Question</option>
-            <option value="Reclamation">Réclamation</option>
-            <option value="Partenariat">Partenariat</option>
-            <option value="Autre">Autre</option>
-            <?php endforeach ?>
+            <!-- Il faut du php dans la boucle -->
+            <?php
+            $sujets = ["Question", "Réclamation", "Partenariat", "Autre"];
+            ?>
+
+            <select name="sujet">
+                <option value="">-- Please choose an option --</option>
+
+                <?php foreach ($sujets as $sujet): ?>
+                    <option value="<?= $sujet ?>"><?= $sujet ?></option>
+                <?php endforeach; ?>
+
+            </select>
+
+        </select>
+
         </select>
 
         <label for="message">Message :</label>
