@@ -18,18 +18,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sujet = trim($_POST['sujet'] ?? '');
     $message = trim($_POST['message'] ?? '');
 
+
+    var_dump($_POST);
+
+    
     if (strlen($nom) < 2 || strlen($nom) > 50) {
         $erreurs[] = "Le nom doit contenir entre 2 et 50 caracteres.";
     } else {
         $succes = " Formulaire valide";
     }
 
-    var_dump($nom);
-    var_dump($prenom);
-    var_dump($email);
-    var_dump($sujet);
-    var_dump($message);
-}
+    // var_dump($nom);
+    // var_dump($prenom);
+    // var_dump($email);
+    // var_dump($sujet);
+    // var_dump($message);
+
 
 
     // Affichez les erreurs ou le message de succès 
@@ -49,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($erreurs)) {
         $succes = true;
     }
-
+}
 ?>
 
 <style>
@@ -77,6 +81,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     }
 
+    .succes {
+       background-color : green;
+       font-size:bold;
+       color:white;
+
+    }
+
+    .error {
+    background-color: red;
+    font-size:bold;
+    color:white;
+
+    }
+
+    
 
 
 </style>
@@ -94,6 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header>
         <h1>Contactez PixelBay</h1>
     </header>
+
+    <div class ="form"></div>
 
     <form method="post" action="">
         <label for="nom">Nom :</label>
