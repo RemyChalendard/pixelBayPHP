@@ -8,47 +8,67 @@ $password = "";
 $age = "";
 
 // Votre logique de validation ici
-  if (empty($nom) || strlen($nom) < 2 || strlen($nom) > 50) {
-        $erreurs[] = "Le nom doit contenir entre 2 et 50 caracteres.";
-    }
+if (empty($nom) || strlen($nom) < 2 || strlen($nom) > 50) {
+    $erreurs[] = "Le nom doit contenir entre 2 et 50 caracteres.";
+}
 
-    if (empty($prenom) || strlen($prenom) < 2 || strlen($prenom) > 30) {
-        $erreurs[] = "Le prenom doit contenir entre 2 et 30 caracteres.";
-    }
+if (empty($prenom) || strlen($prenom) < 2 || strlen($prenom) > 30) {
+    $erreurs[] = "Le prenom doit contenir entre 2 et 30 caracteres.";
+}
 
-    if (empty($nom) || strlen($nom) < 2 || strlen($nom) > 30) {
-        $erreurs[] = "Le nom doit contenir entre 2 et 30 caracteres.";
-    }
+if (empty($nom) || strlen($nom) < 2 || strlen($nom) > 30) {
+    $erreurs[] = "Le nom doit contenir entre 2 et 30 caracteres.";
+}
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $erreurs[] = "L'adresse email n'est pas valide.";
-    }
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $erreurs[] = "L'adresse email n'est pas valide.";
+}
 
-    if ($age < 16 || $age > 120) {
-        $erreurs[] = "Vous devez avoir entre 16 et 120 ans.";
-    }
+if ($age < 16 || $age > 120) {
+    $erreurs[] = "Vous devez avoir entre 16 et 120 ans.";
+}
 
-    if (strlen($mdp) < 8) {
-        $erreurs[] = "Le mot de passe doit contenir au moins 8 caracteres.";
-    }
+if (strlen($mdp) < 8) {
+    $erreurs[] = "Le mot de passe doit contenir au moins 8 caracteres.";
+}
+
+if ($mdp !== $mdpConfirm) {
+    $erreurs[] = "Les mots de passe ne correspondent pas.";
+}
+
+
+if (!$cgu) {
+    $erreurs[] = "Vous devez accepter les conditions générales.";
+}
+
+if (empty($erreurs)) {
+    $succes = true;
+}
+
 
 ?>
 <!-- Votre formulaire HTML ici -->
-     <form method="post" action="">
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" value="" required> <br><br>
+<form method="post" action="">
+    <label for="nom">Nom :</label>
+    <input type="text" id="nom" name="nom" value="" required> <br><br>
 
-        <label for="prenom">Prenom :</label>
-        <input type="text" id="prenom" name="prenom" value="" required> <br><br>
+    <label for="prenom">Prenom :</label>
+    <input type="text" id="prenom" name="prenom" value="" required> <br><br>
 
-        <label for="email">Email :</label>
-        <input type="email" id="email" name="email" value="" required> <br><br>
+    <label for="email">Email :</label>
+    <input type="email" id="email" name="email" value="" required> <br><br>
 
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="password" minlength="8" required> <br><br>
+    <label for="password">Mot de passe :</label>
+    <input type="password" id="password" name="password" minlength="8" required> <br><br>
 
-        <label for="age">Age : </label>
-        <input type="number" id="age" name="age" min="16" max="120" required> <br><br>
+    <label for="passwordConfirm">Confirmer votre mot de passe :</label>
+    <input type="password" id="passwordConfirm" name="passwordConfirm" minlength="8" required> <br><br>
 
-        <button type="submit">Envoyer</button>
-    </form>
+    <label for="age">Age : </label>
+    <input type="number" id="age" name="age" min="16" max="120" required> <br><br>
+
+    <label for="cgu">J'accepte les conditions générales :</label>
+    <input type="checkbox" id="cgu" name="cgu" required> <br><br>
+
+    <button type="submit">Envoyer</button>
+</form>
