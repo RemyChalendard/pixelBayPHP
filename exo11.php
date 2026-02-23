@@ -28,7 +28,6 @@ $age = "";
         $erreurs[] = "Vous devez avoir entre 16 et 120 ans.";
     }
 
-    // Validation mot de passe
     if (strlen($mdp) < 8) {
         $erreurs[] = "Le mot de passe doit contenir au moins 8 caracteres.";
     }
