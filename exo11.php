@@ -47,5 +47,8 @@ $age = "";
         <label for="password">Mot de passe :</label>
         <input type="password" id="password" name="password" minlength="8" required> <br><br>
 
+        <label for="age">Age : </label>
+        <input type="number" id="age" name="age" min="16" max="120" required> <br><br>
+
         <button type="submit">Envoyer</button>
     </form>
