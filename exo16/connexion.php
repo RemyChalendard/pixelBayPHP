@@ -2,10 +2,12 @@
 session_start();
 require_once 'config.php';
 
-if (isset($_SESSION['user_id'])) {
-    header("Location: dashboard.php");
-    exit;
-}   
+// if (isset($_SESSION['user_id'])) {
+//     header("Location: dashboard.php");
+//     exit;
+// }   
+
+// var_dump($_SESSION);
 
 $erreur = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -20,13 +22,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch();
-
+        // var_dump($user);
+      
         if ($user && password_verify($password, $user['password'])) {
+            
             session_regenerate_id(true);
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['prenom'] . ' ' . $user['nom'];
             $_SESSION['user_role'] = $user['role'];
-            header("Location: connexion.php");
+            header("Location: dashboard.php");
             exit;
         } else {
             $erreur = "Email ou mot de passe incorrect.";

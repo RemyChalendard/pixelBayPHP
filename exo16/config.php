@@ -3,6 +3,7 @@ $host = 'mysql-server';
 $dbname = 'pixelbay';
 $username = 'root';
 $password = 'root';
+
 // Votre connexion PDO ici
 
 try {
@@ -14,6 +15,7 @@ try {
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
             ]
         );
+
 
 } catch (PDOException $e) {
     die("Erreur de connexion  : " . $e->getMessage());
