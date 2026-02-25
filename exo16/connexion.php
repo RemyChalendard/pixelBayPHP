@@ -3,7 +3,7 @@ session_start();
 require_once 'config.php';
 
 if (isset($_SESSION['user_id'])) {
-    header("Location: exo16-dashboard.php");
+    header("Location: dashboard.php");
     exit;
 }   
 
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['prenom'] . ' ' . $user['nom'];
             $_SESSION['user_role'] = $user['role'];
-            header("Location: exo16-connexion.php");
+            header("Location: connexion.php");
             exit;
         } else {
             $erreur = "Email ou mot de passe incorrect.";
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="password" id="password" name="password" required>
 
         <button type="submit">Se connecter</button>
-        <p><a href="exo16-inscription.php">Pas de compte ? Inscrivez-vous</a></p>
+        <p><a href="inscription.php">Pas de compte ? Inscrivez-vous</a></p>
     </form>
 </body>
 </html>

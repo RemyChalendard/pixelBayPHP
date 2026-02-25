@@ -86,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <?php if ($succes): ?>
         <p class="succes">Inscription réussie ! Vous pouvez maintenant vous connecter.
-        <a href="exo16-connexion.php">Se connecter</a></p>
+        <a href="connexion.php">Se connecter</a></p>
     <?php else: ?>
 
         <?php if (!empty($erreurs)): ?>
@@ -115,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <input type="password" id="password_confirm" name="password_confirm" required>
 
         <button type="submit">S'inscrire</button>
-        <p><a href="exo16-connexion.php">Déjà un compte ? Se connecter</a></p>
+        <p><a href="connexion.php">Déjà un compte ? Se connecter</a></p>
         <?php endif; ?>
     </form>
 </body>
