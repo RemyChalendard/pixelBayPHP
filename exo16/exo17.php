@@ -33,6 +33,14 @@ if ($prixFiltre !== 'moins30') {
 }
 
 $sql = "SELECT * FROM jeux";
+if (!empty($conditions)) {
+    $sql .= " WHERE " . implode(" AND ", $conditions);
+}
+$sql .= " ORDER BY titre";
+ $stmt = $pdo->prepare($sql);
+$stmt->execute($params);    
+$resultats = $stmt->fetchAll();
+?>
 
 
 
