@@ -18,6 +18,7 @@ $conditions = [];
 $params = [];
 
 
+
 if ($genreFiltre !== 'tous') {
     $conditions[] = "genre = :genre";
     $params[':genre'] = $genreFiltre;
