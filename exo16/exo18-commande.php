@@ -23,7 +23,6 @@ foreach ($panier as $article) {
 $totalHT  = array_sum(array_map(fn($a) => $a['prix'] * $a['quantite'], $panier));
 $totalTTC = round($totalHT * 1.20, 2);
 
-// Vide le panier si aucune erreur
 if (empty($erreurs)) {
     $_SESSION['panier'] = [];
 }
