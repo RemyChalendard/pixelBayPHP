@@ -10,7 +10,7 @@ if (isset($_GET['supprimer'])) {
         unset($_SESSION['panier'][$index]);
         $_SESSION['panier'] = array_values($_SESSION['panier']); // Réindexer le tableau
     }
-    
+
     header("Location: exo18-panier.php");
     exit;
 }
@@ -23,6 +23,7 @@ if (isset($_GET['vider'])) {
 }
 
 $totalHT  = array_sum(array_map(fn($a) => $a['prix'] * $a['quantite'], $_SESSION['panier']));
+var_dump($_SESSION['panier']);
 // array_map applique une fonction sur chaque élément d'un tableau et retourne un nouveau tableau avec les résultats.
 $tva      = round($totalHT * 0.20, 2);
 $totalTTC = round($totalHT * 1.20, 2);
@@ -117,5 +118,4 @@ $totalTTC = round($totalHT * 1.20, 2);
         <a class="valider" href="exo18-commande.php">Valider la commande</a>
     <?php endif; ?>
 </body>
-
 </html>
