@@ -20,7 +20,10 @@ foreach ($panier as $article) {
 }
 
 // Calcul du total
-$totalHT  = array_sum(array_map(fn($a) => $a['prix'] * $a['quantite'], $panier));
+$totalHT = 0;
+foreach ($panier as $article) {
+    $totalHT += $article['prix'] * $article['quantite'];
+}
 $totalTTC = round($totalHT * 1.20, 2);
 
 if (empty($erreurs)) {
